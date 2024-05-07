@@ -20,6 +20,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 import { extractUserAgent } from "./extract-user-agent";
+import { setCookie } from "@/utils/setCokkie";
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -47,10 +48,12 @@ const LoginForm = () => {
           body: JSON.stringify(newValues)
         });
 
-        const { success, error } = await response.json();
+        const { success, error, accessToken, refreshToken } = await response.json();
 
         if (success) {
           toast.success(success);
+          setCookie('accessToken', accessToken, 0.2)
+          setCookie('refreshToken', refreshToken, 1)
           router.push('/user/dashboard')
         } else {
           toast.error(error);
