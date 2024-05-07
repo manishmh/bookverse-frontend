@@ -1,9 +1,11 @@
 export const extractUserAgent = () => {
-  const userAgentString = navigator.userAgent;
-  const startIndex = userAgentString.indexOf('Mozilla/5.0');
-  const endIndex = userAgentString.indexOf(')');
-  const extractedUserAgent = userAgentString.slice(startIndex, endIndex + 1);
-  return extractedUserAgent;
+  if (typeof window !== 'undefined') {
+    const userAgentString = navigator.userAgent;
+    const endIndex = userAgentString.indexOf(')');
+    const extractedUserAgent = userAgentString.slice(0, endIndex + 1);
+    return extractedUserAgent;
+  }
+  return "User agent not available";
 };
 
   
