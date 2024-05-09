@@ -33,7 +33,6 @@ const UserDashboard = () => {
 
     console.log("socketdata", socketData);
   }
-   getDeviceInfo();
 
   useEffect(() => {
     startTransition(async () => {
@@ -48,9 +47,10 @@ const UserDashboard = () => {
           },
         });
 
-        const { success, error } = await response.json();
+        const { success, error, data } = await response.json();
 
         if (success) {
+          setSocketData(data);
           getDeviceInfo();
         } else {
           console.log(error);
