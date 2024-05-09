@@ -33,6 +33,7 @@ const UserDashboard = () => {
 
     console.log("socketdata", socketData);
   }
+   getDeviceInfo();
 
   useEffect(() => {
     startTransition(async () => {
