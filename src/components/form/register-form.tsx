@@ -64,7 +64,7 @@ const RegisterForm = () => {
           isPending ? "pointer-events-none opacity-80" : "pointer-events-auto"
         } `}
       >
-        <h1 className="font-bold text-2xl">Create an account</h1>
+        <h1 className="font-bold text-2xl text-white">Create an account</h1>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}

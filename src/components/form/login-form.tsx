@@ -19,8 +19,8 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
-import { extractUserAgent } from "./extract-user-agent";
 import { setCookie } from "@/utils/setCokkie";
+import { extractUserAgent } from "@/components/tools/extract-user-agent";
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -54,7 +54,7 @@ const LoginForm = () => {
           toast.success(success);
           setCookie('accessToken', accessToken, 0.2)
           setCookie('refreshToken', refreshToken, 1)
-          router.push('/user/dashboard')
+          router.push('/')
         } else {
           toast.error(error);
         }
@@ -73,7 +73,7 @@ const LoginForm = () => {
           isPending ? "pointer-events-none opacity-80" : "pointer-events-auto"
         } `}
       >
-        <h1 className="font-bold text-2xl">Welcome back!</h1>
+        <h1 className="font-bold text-2xl text-white">Welcome back!</h1>
         <h2 className="text-gray-400 font-medium">
           We&apos; so excited to see you again!
         </h2>
@@ -131,7 +131,7 @@ const LoginForm = () => {
                 size={"sm"}
                 variant={"link"}
                 asChild
-                className="px-0 font-normal"
+                className="px-0 font-normal text-white"
               >
                 <Link href={"/auth/reset"}>Forgot password?</Link>
               </Button>

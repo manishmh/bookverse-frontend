@@ -1,14 +1,9 @@
-'use client'
-
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { ModeToggle } from "@/components/tools/toggle-theme";
 
 export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push('/register');
-  }, []);
-
-  return null;
+  return (
+    <>
+      <div className=" text-2xl font-bold text-red-500">Homepage</div>
+    </>
+  );
 }
