@@ -7,8 +7,7 @@ import ProtectedRoute from "@/components/tools/protected-route";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "sonner";
 import "./globals.css";
-
-const noAuthRequired = ['/login'];
+import { protectedRoutes } from "../../routes";
 
 export default function RootLayout({
   children,
@@ -23,13 +22,12 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="bookverse-theme" disableTransitionOnChange>
           <AuthProvider>
-            {noAuthRequired.includes(pathname) ? (
-              children
-            ) : (
+            { protectedRoutes.includes(pathname) ?  (
               <ProtectedRoute requiredRole={requiredRole}>
                 {children}
               </ProtectedRoute>
-            )}
+            ) : children
+            }
           </AuthProvider>
           <Toaster position="bottom-right" expand={true} richColors />
         </ThemeProvider>

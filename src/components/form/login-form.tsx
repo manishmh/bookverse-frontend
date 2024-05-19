@@ -19,8 +19,9 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
-import { setCookie } from "@/utils/setCokkie";
 import { extractUserAgent } from "@/components/tools/extract-user-agent";
+
+
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -42,6 +43,7 @@ const LoginForm = () => {
 
         const response = await fetch(backendBaseUrl + "/login", {
           method: "POST",
+          credentials: 'include',
           headers: {
             "Content-Type": "application/json",
           },
@@ -52,8 +54,8 @@ const LoginForm = () => {
 
         if (success) {
           toast.success(success);
-          setCookie('accessToken', accessToken, 0.2)
-          setCookie('refreshToken', refreshToken, 1)
+          // setCookie('accessToken', accessToken, 0.2)
+          // setCookie('refreshToken', refreshToken, 1)
           router.push('/')
         } else {
           toast.error(error);

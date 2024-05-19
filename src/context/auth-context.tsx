@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import axios from 'axios';
 import { backendBaseUrl } from '@/constant';
 
@@ -22,12 +22,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const router = useRouter();
+    const pathname = usePathname()
 
     useEffect(() => {
         const validateUser = async () => {
             try {
                 const { data } = await axios.get(`${backendBaseUrl}/validate`, { withCredentials: true });
                 setUser(data.user);
+                pathname === '/login' && router.push('/');
             } catch (error) {
                 setUser(null);
             } finally {

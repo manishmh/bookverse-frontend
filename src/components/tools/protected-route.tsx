@@ -25,7 +25,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
         return <div>Loading...</div>;
     }
 
-    return <>{children}</>;
+    return <>{ children }</>;
 };
 
 export default ProtectedRoute;
