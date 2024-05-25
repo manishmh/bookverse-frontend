@@ -1,13 +1,15 @@
-'use client'
+"use client";
 
-import { ReactNode } from "react";
-import { usePathname } from "next/navigation";
-import { AuthProvider } from "@/context/auth-context";
 import ProtectedRoute from "@/components/tools/protected-route";
+import { AuthProvider } from "@/context/auth-context";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { store } from "@/store/redux-store";
+import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
+import { Provider } from "react-redux";
 import { Toaster } from "sonner";
-import "./globals.css";
 import { protectedRoutes } from "../../routes";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -20,17 +22,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="bookverse-theme" disableTransitionOnChange>
-          <AuthProvider>
-            { protectedRoutes.includes(pathname) ?  (
-              <ProtectedRoute requiredRole={requiredRole}>
-                {children}
-              </ProtectedRoute>
-            ) : children
-            }
-          </AuthProvider>
-          <Toaster position="bottom-right" expand={true} richColors />
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            storageKey="bookverse-theme"
+            disableTransitionOnChange
+          >
+            <AuthProvider>
+              {protectedRoutes.includes(pathname) ? (
+                <ProtectedRoute requiredRole={requiredRole}>
+                  {children}
+                </ProtectedRoute>
+              ) : (
+                children
+              )}
+            </AuthProvider>
+            <Toaster position="bottom-right" expand={true} richColors />
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
