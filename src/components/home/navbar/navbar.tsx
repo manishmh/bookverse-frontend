@@ -5,7 +5,13 @@ import {
   setSearchInput,
 } from "@/redux-state/get-search-input";
 import Link from "next/link";
-import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { FaBell } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,46 +38,52 @@ const Navbar: React.FC = () => {
 
   // handles when the user profile card state that decides when to show the card.
   const handleNotificationState = useCallback(() => {
-    setNotificationState(prevState => !prevState);
+    setNotificationState((prevState) => !prevState);
   }, []);
 
   const handleProfileState = useCallback(() => {
-    setUserProfileState(prevState => !prevState);
+    setUserProfileState((prevState) => !prevState);
   }, []);
 
   // handles the mouse click outside the respective component. EX. if user clicks outside the notification area it should close the notification card.
-  const handleProfileOutsideClick = useCallback((event: Event) => {
-    if (
-      userProfileRef.current &&
-      !userProfileRef.current.contains(event.target as Node)
-    ) {
-      if (userProfileState) {
-        handleProfileState();
+  const handleProfileOutsideClick = useCallback(
+    (event: Event) => {
+      if (
+        userProfileRef.current &&
+        !userProfileRef.current.contains(event.target as Node)
+      ) {
+        if (userProfileState) {
+          handleProfileState();
+        }
       }
-    }
-  }, [userProfileState, handleProfileState]);
+    },
+    [userProfileState, handleProfileState]
+  );
 
-  const handleClickOutside = useCallback((event: Event) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
-      if (notificationState) {
-        handleNotificationState();
+  const handleClickOutside = useCallback(
+    (event: Event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        if (notificationState) {
+          handleNotificationState();
+        }
       }
-    }
-  }, [notificationState, handleNotificationState]);
+    },
+    [notificationState, handleNotificationState]
+  );
 
   const handleSearchCardOutsideClick = (event: Event) => {
     if (
       searchCardRef.current &&
-     !searchCardRef.current.contains(event.target as Node)
+      !searchCardRef.current.contains(event.target as Node)
     ) {
       if (searchClick) {
         setSearchClick(!searchClick);
       }
     }
-  }
+  };
 
   // to set focus on input field after it comes out.
   useEffect(() => {
@@ -86,7 +98,7 @@ const Navbar: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleSearchCardOutsideClick);
     };
-  })
+  });
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -105,7 +117,7 @@ const Navbar: React.FC = () => {
   }, [handleProfileOutsideClick]);
 
   return (
-    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4">
+    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative">
       <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
         <div className="uppercase font-bold text-xl">Bookverse</div>
         <nav className="font-semibold text-sm md:text-base capitalize text-muted-dark hidden md:flex">
@@ -125,22 +137,17 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex items-center gap-4 w-full">
         <div ref={searchCardRef} className="w-full flex justify-end">
-          <div className="relative w-full max-w-sm 2xl:max-w-md">
-            {searchClick &&  (
-              <SearchCard
-                searchClick={searchClick}
-                setSearchClick={setSearchClick}
-              />
-            )}
-            <div className="cursor-pointer flex w-full justify-end overflow-clip relative">
+          <div className="lg:relative w-full max-w-sm 2xl:max-w-md">
+            {searchClick && <SearchCard />}
+            <div className="cursor-pointer flex w-full justify-end overflow-clip absolute lg:relative z-50 lg:z-auto right-0 top-full lg:top-0">
               <div
-                className={`w-full h-8 2xl:h-10 bg-white transition-transform duration-500 ${
+                className={` w-full h-10 lg:h-8 2xl:h-10 bg-white transition-transform duration-500 ${
                   searchClick ? "" : "translate-x-full-plus-40"
                 }`}
               >
                 <input
                   type="text"
-                  className={`bg-white text-black w-full h-full pl-2 text-xs border-none outline-none`}
+                  className={`bg-white text-black w-full h-full px-2 text-sm md:text-xs border-none outline-none`}
                   autoFocus
                   ref={inputRef}
                   value={searchInput}
@@ -152,15 +159,27 @@ const Navbar: React.FC = () => {
                 />
               </div>
               <div
-                className={`px-2 py-1 flex items-center ${
-                  searchClick ? "bg-theme text-white hover:text-[#d8d6d6]" : "bg-none text-muted-dark hover:text-white"
+                className={`px-2 py-1 items-center hidden lg:flex ${
+                  searchClick
+                    ? "bg-theme text-white hover:text-[#d8d6d6]"
+                    : "bg-none text-muted-dark hover:text-white "
                 } `}
                 onClick={() => setSearchClick(true)}
               >
-                <IoSearch className="transition-colors duration-200 text-2xl overflow-hidden" />
+                <IoSearch className="transition-colors duration-200 text-2xl overflow-hidden " />
               </div>
             </div>
           </div>
+        </div>
+        <div className="lg:hidden">
+          <IoSearch
+            className={`transition-colors duration-200 text-2xl ${
+              searchClick
+                ? "text-white hover:text-[#d8d6d6]"
+                : "text-muted-dark"
+            }`}
+            onClick={() => setSearchClick(true)}
+          />
         </div>
         <div ref={dropdownRef} className="relative">
           <div
