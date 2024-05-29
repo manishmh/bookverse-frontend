@@ -49,13 +49,16 @@ const config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        theme: "#A87FFB",
+        theme: {
+          light: "#7d55cd",
+          dark: "#472290"
+        },
         card: {
           border: "#3d516f",
           bg: "#10151D"
         },
         muted: {
-          dark: "#68696a",
+          dark: "#939DB6",
           light: "#b3aede"
         } 
 

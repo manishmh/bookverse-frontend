@@ -156,3 +156,13 @@ nav {
 .translate-x-full-plus-40 {
   transform: translateX(calc(100% + 40px));
 }
+
+/* background: linear-gradient(61deg, #217BFE 0.0%, #078EFB 27.0%, #A190FF 78.0%, #BD99FE 100.0%); */
+  /* border-color: linear-gradient(320deg, #2E64DE -17.73%, #3C8FE3 50.43%); */
+/* background-color: #060606; */
+
+body {
+  background: linear-gradient(180deg, #141620 0%, #0A0B0D 100%);
+  background-repeat: no-repeat;
+  height: 100vh;
+}

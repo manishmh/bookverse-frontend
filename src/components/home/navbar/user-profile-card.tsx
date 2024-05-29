@@ -15,7 +15,7 @@ const UserProfileCard = ({
     <DropdownCard className="rounded-md h-auto cursor-default p-2 w-[250px] pb-4">
       <div>
         <div className="font-semibold leading-5">
-          <div className="text-theme">Maish Malhotra</div>
+          <div className="text-theme-light">Maish Malhotra</div>
           <div className="font-medium text-xs text-muted-dark">
             manishmh982@gmail.com
           </div>
@@ -78,7 +78,7 @@ const ProfileCardItem = ({
 }) => {
   return (
     <Link href={link} onClick={handleProfileState}>
-      <div className="flex gap-2 items-center bg-[#373647] hover:bg-[#454253] px-4 rounded-full py-1 text-sm hover:text-theme transition-colors duration-200">
+      <div className="flex gap-2 items-center bg-[#373647] hover:bg-[#454253] px-4 rounded-full py-1 text-sm hover:text-theme-light transition-colors duration-200">
         <span className="text-xs">{logo}</span>
         {item}
       </div>

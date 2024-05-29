@@ -1,6 +1,8 @@
 import NavbarNotificationCard from "@/components/home/navbar/navbar-notification-card";
 import UserProfileCard from "@/components/home/navbar/user-profile-card";
+import { useAuth } from "@/context/auth-context";
 import {
+  resetSearchInput,
   selectSearchInput,
   setSearchInput,
 } from "@/redux-state/get-search-input";
@@ -16,8 +18,8 @@ import { FaBell } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import LoginButton from "./login-button";
 import SearchCard from "./search-card";
-import { resetSearchInput } from "@/redux-state/get-search-input";
 
 const Navbar: React.FC = () => {
   const notificationCount: number = 9;
@@ -25,6 +27,7 @@ const Navbar: React.FC = () => {
   const [userProfileState, setUserProfileState] = useState<boolean>(false);
   const [searchClick, setSearchClick] = useState<boolean>(false);
 
+  const { user } = useAuth();
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
 
@@ -47,11 +50,10 @@ const Navbar: React.FC = () => {
     setUserProfileState((prevState) => !prevState);
   }, []);
 
-
   const handleInputClear = () => {
     dispatch(resetSearchInput());
     searchClick && inputRef.current?.focus();
-  }
+  };
 
   // handles the mouse click outside the respective component. EX. if user clicks outside the notification area it should close the notification card.
   const handleProfileOutsideClick = useCallback(
@@ -128,7 +130,7 @@ const Navbar: React.FC = () => {
     <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative">
       <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
         <div className="uppercase font-bold text-lg md:text-xl">Bookverse</div>
-        <nav className="font-semibold text-sm md:text-base capitalize text-muted-dark hidden md:flex">
+        <nav className="text-sm md:text-base capitalize text-muted-dark hidden md:flex">
           <Link href="" className="px-2">
             completed
           </Link>
@@ -143,7 +145,7 @@ const Navbar: React.FC = () => {
           </Link>
         </nav>
       </div>
-      <div className="flex items-center gap-2 sm:gap-4 w-full">
+      <div className="flex items-center gap-2 xs:gap-4 md:gap-5 w-full">
         <div ref={searchCardRef} className="w-full flex justify-end">
           <div className="lg:relative w-full max-w-sm 2xl:max-w-md">
             {searchClick && <SearchCard />}
@@ -165,14 +167,17 @@ const Navbar: React.FC = () => {
                   autoComplete="false"
                   spellCheck="false"
                 />
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-xl text-gray-700" onClick={handleInputClear}>
+                <div
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-xl text-gray-700"
+                  onClick={handleInputClear}
+                >
                   <MdClose />
                 </div>
               </div>
               <div
                 className={`px-2 py-1 items-center hidden relative lg:flex ${
                   searchClick
-                    ? "bg-theme text-white hover:text-[#d8d6d6]"
+                    ? "bg-theme-light text-white hover:text-[#d8d6d6]"
                     : "bg-none text-muted-dark hover:text-white "
                 } `}
                 onClick={() => setSearchClick(true)}
@@ -210,16 +215,20 @@ const Navbar: React.FC = () => {
             />
           )}
         </div>
-        <div
-          ref={userProfileRef}
-          onClick={handleProfileState}
-          className="w-8 md:w-10 relative cursor-pointer aspect-square rounded-full flex-shrink-0 bg-[#383746] grid place-items-center"
-        >
-          <span className="font-semibold text-muted-light">M</span>
-          {userProfileState && (
-            <UserProfileCard handleProfileState={handleProfileState} />
-          )}
-        </div>
+        {user ? (
+          <div
+            ref={userProfileRef}
+            onClick={handleProfileState}
+            className="w-8 md:w-10 relative cursor-pointer aspect-square rounded-full flex-shrink-0 bg-[#383746] grid place-items-center"
+          >
+            <span className="font-semibold text-muted-light">M</span>
+            {userProfileState && (
+              <UserProfileCard handleProfileState={handleProfileState} />
+            )}
+          </div>
+        ) : (
+          <LoginButton />
+        )}
       </div>
     </div>
   );

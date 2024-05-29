@@ -63,7 +63,7 @@ const NavbarNotificationCard = ({
         </div>
         <div className="bg-card-bg border-t border-card-border">
           <Link href="">
-            <div className="text-sm text-theme text-center py-3 hover:bg-gray-900 transition-colors duration-200">
+            <div className="text-sm text-theme-dark text-center py-3 hover:bg-gray-900 transition-colors duration-200">
               View all
             </div>
           </Link>

@@ -35,7 +35,7 @@ const SearchCard = ({
         />
 
         <Link href="">
-          <div className="flex gap-2 items-center group justify-center px-2 py-4 bg-theme text-black">
+          <div className="flex gap-2 items-center group justify-center px-2 py-4 bg-theme-light text-black">
             View all results{" "}
             <span className="group-hover:translate-x-2 transition-transform duration-300">
               <FaChevronRight />
