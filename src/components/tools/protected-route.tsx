@@ -19,7 +19,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requiredRole 
                 router.push('/');
             }
         }
-    }, [user, loading]);
+    }, [user, loading, requiredRole, router]);
 
     if (loading || !user || (requiredRole && user.role !== requiredRole)) {
         return <div>Loading...</div>;

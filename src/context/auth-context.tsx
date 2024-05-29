@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             }
         };
         validateUser();
-    }, []);
+    }, [pathname, router]);
 
     const login = async (email: string, password: string) => {
         const { data } = await axios.post(`${backendBaseUrl}/login`, { email, password });

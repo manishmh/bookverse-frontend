@@ -1,9 +1,13 @@
-import mangaListReducer from '@/redux-state/get-manga-list'
 import { configureStore } from '@reduxjs/toolkit'
+import mangaListReducer from '@/redux-state/get-manga-list'
+import dropDownStateReducer from '@/redux-state/get-dropdown-state'
+import searchInputReducer from '@/redux-state/get-search-input'
 
 export const store = configureStore({
   reducer: {
-    mangaList: mangaListReducer
+    mangaList: mangaListReducer,
+    dropdownState: dropDownStateReducer,
+    searchInput: searchInputReducer,
   },
 })
 

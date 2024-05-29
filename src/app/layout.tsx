@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/home/navbar/navbar";
 import ProtectedRoute from "@/components/tools/protected-route";
 import { AuthProvider } from "@/context/auth-context";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -21,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className=" trasition-all duration-300">
         <Provider store={store}>
           <ThemeProvider
             attribute="class"
@@ -31,6 +32,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AuthProvider>
+              <Navbar />
               {protectedRoutes.includes(pathname) ? (
                 <ProtectedRoute requiredRole={requiredRole}>
                   {children}

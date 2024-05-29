@@ -67,14 +67,92 @@
 }
  
 @layer base {
-  * {
-  }
-  body {
-  }
 }
+
 
 body {
   /* background-color: #030014; */
   background-color: #10151D;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif!important;
+}
+
+:root {
+  --body-color: #010c15;
+  --text-color: #7e8294;
+  --hover-color: #ebd9ff;
+  --accent-color: #A87FFB;
+  --underline-thickness: 2px;
+
+  color-scheme: dark;
+}
+
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 4px; /* Change this value to adjust the width */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+
+/* navbar hover effect */
+nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  & a {
+    /* color: var(--text-color); */
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
+    text-decoration: none;
+
+
+    &::before {
+      content: "";
+      scale: 0 1;
+      position: absolute;
+      background: var(--accent-color);
+      transition: 0.3s, translate 0s 0.3s;
+      inset: calc(100% - var(--underline-thickness)) 0 0 0;
+    }
+
+    &:hover {
+      color: var(--hover-color);
+
+      &::before {
+        translate: 0;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  &:hover {
+    & a::before {
+      scale: 1;
+    }
+
+    & a:has(~ a:hover)::before {
+      translate: 100% 0;
+      transition: 0.2s 0.2s, scale 0s 0.4s;
+    }
+
+    & a:hover ~ a::before {
+      translate: -100% 0;
+      transition: 0.2s 0.2s, scale 0s 0.4s;
+    }
+  }
+}
+
+.translate-x-full-plus-40 {
+  transform: translateX(calc(100% + 40px));
 }
