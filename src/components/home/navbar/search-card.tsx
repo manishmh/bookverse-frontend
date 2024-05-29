@@ -1,22 +1,13 @@
 import DropdownCard from "@/components/global/dropdown-card";
-import { selectSearchInput } from "@/redux-state/get-search-input";
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
 import { FaChevronRight } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import DropdownComponent from "./dropdown-component";
 
 const SearchCard = ({
-  searchClick,
-  setSearchClick,
 }: {
-  searchClick: boolean;
-  setSearchClick: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const searchInput = useSelector(selectSearchInput);
-
   return (
-    <DropdownCard className="w-full absolute top-full translate-y-0 h-auto">
+    <DropdownCard className="w-full absolute top-full translate-y-[40px] lg:translate-y-0 h-auto">
       <div>
         <DropdownComponent
           img="https://cdn.noitatnemucod.net/thumbnail/100x200/100/1f06eb0baf5520aa639b546fc189400d.jpg"
