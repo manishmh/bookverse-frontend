@@ -27,7 +27,8 @@ const Navbar: React.FC = () => {
   const [userProfileState, setUserProfileState] = useState<boolean>(false);
   const [searchClick, setSearchClick] = useState<boolean>(false);
 
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
+  console.log('user', user)
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
 
@@ -197,25 +198,27 @@ const Navbar: React.FC = () => {
             onClick={() => setSearchClick(true)}
           />
         </div>
-        <div ref={dropdownRef} className="relative">
-          <div
-            className="grid place-items-center w-8 md:w-10 aspect-square rounded-full bg-[#383746] flex-shrink-0 cursor-pointer relative"
-            onClick={handleNotificationState}
-          >
-            {notificationCount !== 0 && (
-              <div className="absolute w-5 aspect-square bg-red-600 rounded-full -top-[2px] -right-2 flex-shrink-0 grid place-items-center text-xs font-semibold">
-                {notificationCount > 9 ? "9+" : notificationCount}
-              </div>
+        {user && (
+          <div ref={dropdownRef} className="relative">
+            <div
+              className="grid place-items-center w-8 md:w-10 aspect-square rounded-full bg-[#383746] flex-shrink-0 cursor-pointer relative"
+              onClick={handleNotificationState}
+            >
+              {notificationCount !== 0 && (
+                <div className="absolute w-5 aspect-square bg-red-600 rounded-full -top-[2px] -right-2 flex-shrink-0 grid place-items-center text-xs font-semibold">
+                  {notificationCount > 9 ? "9+" : notificationCount}
+                </div>
+              )}
+              <FaBell className="text-muted-light" />
+            </div>
+            {notificationState && (
+              <NavbarNotificationCard
+                handleNotificationState={handleNotificationState}
+              />
             )}
-            <FaBell className="text-muted-light" />
           </div>
-          {notificationState && (
-            <NavbarNotificationCard
-              handleNotificationState={handleNotificationState}
-            />
-          )}
-        </div>
-        {!user && !loading ? (
+        )}
+        {!user ? (
           <LoginButton />
         ) : (
           <div

@@ -32,7 +32,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <AuthProvider>
-              <Navbar />
               {protectedRoutes.includes(pathname) ? (
                 <ProtectedRoute requiredRole={requiredRole}>
                   {children}

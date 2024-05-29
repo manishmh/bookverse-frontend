@@ -1,11 +1,12 @@
 "use client";
 
-import { ModeToggle } from "@/components/tools/toggle-theme";
+import Navbar from "@/components/home/navbar/navbar";
 
 export default function Home() {
 
   return (
     <>
+      <Navbar />  
     </>
   );
 }
