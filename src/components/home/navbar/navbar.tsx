@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
   const [userProfileState, setUserProfileState] = useState<boolean>(false);
   const [searchClick, setSearchClick] = useState<boolean>(false);
 
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
 
@@ -215,7 +215,9 @@ const Navbar: React.FC = () => {
             />
           )}
         </div>
-        {user ? (
+        {!user && !loading ? (
+          <LoginButton />
+        ) : (
           <div
             ref={userProfileRef}
             onClick={handleProfileState}
@@ -226,8 +228,6 @@ const Navbar: React.FC = () => {
               <UserProfileCard handleProfileState={handleProfileState} />
             )}
           </div>
-        ) : (
-          <LoginButton />
         )}
       </div>
     </div>
