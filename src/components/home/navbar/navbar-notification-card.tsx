@@ -8,7 +8,7 @@ const NavbarNotificationCard = ({
   handleNotificationState: () => void;
 }) => {
   return (
-    <DropdownCard  className="rounded-md h-auto cursor-default overflow-hidden">
+    <DropdownCard  className="rounded-md h-auto cursor-default overflow-hidden -right-10 xs:right-0">
       <div className="h-full relative">
         <div className="max-h-[450px] overflow-y-auto scroll-smooth">
           <SingleNotification

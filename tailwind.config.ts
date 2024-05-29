@@ -20,6 +20,7 @@ const config = {
     },
     extend: {
       screens: {
+        "xs": "320px",
         "3xl": "1980px", // Extending the theme to include 3xl
       },
       colors: {

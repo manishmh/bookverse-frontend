@@ -14,14 +14,16 @@ import React, {
 } from "react";
 import { FaBell } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
+import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import SearchCard from "./search-card";
+import { resetSearchInput } from "@/redux-state/get-search-input";
 
 const Navbar: React.FC = () => {
   const notificationCount: number = 9;
   const [notificationState, setNotificationState] = useState<boolean>(false);
   const [userProfileState, setUserProfileState] = useState<boolean>(false);
-  const [searchClick, setSearchClick] = useState<boolean>(true);
+  const [searchClick, setSearchClick] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
@@ -44,6 +46,12 @@ const Navbar: React.FC = () => {
   const handleProfileState = useCallback(() => {
     setUserProfileState((prevState) => !prevState);
   }, []);
+
+
+  const handleInputClear = () => {
+    dispatch(resetSearchInput());
+    searchClick && inputRef.current?.focus();
+  }
 
   // handles the mouse click outside the respective component. EX. if user clicks outside the notification area it should close the notification card.
   const handleProfileOutsideClick = useCallback(
@@ -119,7 +127,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative">
       <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
-        <div className="uppercase font-bold text-xl">Bookverse</div>
+        <div className="uppercase font-bold text-lg md:text-xl">Bookverse</div>
         <nav className="font-semibold text-sm md:text-base capitalize text-muted-dark hidden md:flex">
           <Link href="" className="px-2">
             completed
@@ -135,19 +143,19 @@ const Navbar: React.FC = () => {
           </Link>
         </nav>
       </div>
-      <div className="flex items-center gap-4 w-full">
+      <div className="flex items-center gap-2 sm:gap-4 w-full">
         <div ref={searchCardRef} className="w-full flex justify-end">
           <div className="lg:relative w-full max-w-sm 2xl:max-w-md">
             {searchClick && <SearchCard />}
             <div className="cursor-pointer flex w-full justify-end overflow-clip absolute lg:relative z-50 lg:z-auto right-0 top-full lg:top-0">
               <div
-                className={` w-full h-10 lg:h-8 2xl:h-10 bg-white transition-transform duration-500 ${
+                className={` w-full h-10 lg:h-8 2xl:h-10 bg-white transition-transform duration-500 relative ${
                   searchClick ? "" : "translate-x-full-plus-40"
                 }`}
               >
                 <input
                   type="text"
-                  className={`bg-white text-black w-full h-full px-2 text-sm md:text-xs border-none outline-none`}
+                  className={`bg-white text-black w-full h-full px-2 pr-8 text-sm lg:text-xs 2xl:text-sm border-none outline-none`}
                   autoFocus
                   ref={inputRef}
                   value={searchInput}
@@ -157,9 +165,12 @@ const Navbar: React.FC = () => {
                   autoComplete="false"
                   spellCheck="false"
                 />
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-xl text-gray-700" onClick={handleInputClear}>
+                  <MdClose />
+                </div>
               </div>
               <div
-                className={`px-2 py-1 items-center hidden lg:flex ${
+                className={`px-2 py-1 items-center hidden relative lg:flex ${
                   searchClick
                     ? "bg-theme text-white hover:text-[#d8d6d6]"
                     : "bg-none text-muted-dark hover:text-white "
@@ -183,7 +194,7 @@ const Navbar: React.FC = () => {
         </div>
         <div ref={dropdownRef} className="relative">
           <div
-            className="grid place-items-center w-10 aspect-square rounded-full bg-[#383746] flex-shrink-0 cursor-pointer relative"
+            className="grid place-items-center w-8 md:w-10 aspect-square rounded-full bg-[#383746] flex-shrink-0 cursor-pointer relative"
             onClick={handleNotificationState}
           >
             {notificationCount !== 0 && (
@@ -202,7 +213,7 @@ const Navbar: React.FC = () => {
         <div
           ref={userProfileRef}
           onClick={handleProfileState}
-          className="w-10 relative cursor-pointer aspect-square rounded-full flex-shrink-0 bg-[#383746] grid place-items-center"
+          className="w-8 md:w-10 relative cursor-pointer aspect-square rounded-full flex-shrink-0 bg-[#383746] grid place-items-center"
         >
           <span className="font-semibold text-muted-light">M</span>
           {userProfileState && (
