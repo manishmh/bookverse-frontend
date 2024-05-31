@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
   const [searchClick, setSearchClick] = useState<boolean>(false);
 
   const { user } = useAuth();
-  console.log('user', user)
+  console.log("user", user);
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
 
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
   }, [handleProfileOutsideClick]);
 
   return (
-    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative">
+    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative z-40">
       <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
         <div className="uppercase font-bold text-lg md:text-xl">Bookverse</div>
         <nav className="text-sm md:text-base capitalize text-muted-dark hidden md:flex">

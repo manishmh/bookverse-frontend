@@ -29,10 +29,6 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "#201F31",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -48,6 +44,10 @@ const config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          light: "#141620",
+          dark: "#0A0B0D"
         },
         theme: {
           light: "#7d55cd",
