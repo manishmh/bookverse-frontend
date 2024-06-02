@@ -21,7 +21,7 @@ const HeroDetails = ({
   readLink: string;
 }) => {
   return (
-    <div className="inset-0 bg-opacity-20 flex items-end px-3 pb-16 pt-28 z-10 w-full h-[40vh] md:h-auto md:min-h-[70vh] 2xl:min-h-[80vh] 3xl:min-h-[900px]">
+    <div className="inset-0 bg-opacity-20 flex items-end px-3 pb-16 pt-28 z-10 w-full h-[40vh] md:h-auto md:min-h-[70vh] xl:min-h-[80vh] 3xl:min-h-[900px]">
       <div className="flex flex-col gap-1 md:gap-6">
         <div>
           <div className="text-theme-light text-sm md:text-base pb-2">

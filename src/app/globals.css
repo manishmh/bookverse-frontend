@@ -166,3 +166,40 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
+
+.swiper-button-next, .swiper-button-prev {
+  background-color: #2f3348;
+  border-radius: 5px;
+  height: auto !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  z-index: 40;
+  color: white !important;
+  font-weight: 800!important;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background-color: #A87FFB;
+  transition: all;
+  transition-duration: 300ms!important;
+}
+
+.swiper-button-prev {
+  left: calc(100% - 42px) !important;
+  top: calc(85% + 42px)!important;
+}
+
+.swiper-button-next {
+  top: 85%!important;
+}
+
+.swiper-button-next::after , .swiper-button-prev::after {
+  font-size: 14px!important; 
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-button-next, .swiper-button-prev {
+    display: none!important;
+  }
+}
