@@ -28,7 +28,6 @@ const Navbar: React.FC = () => {
   const [searchClick, setSearchClick] = useState<boolean>(false);
 
   const { user } = useAuth();
-  console.log("user", user);
   const dispatch = useDispatch();
   const searchInput = useSelector(selectSearchInput);
 
@@ -63,8 +62,10 @@ const Navbar: React.FC = () => {
         userProfileRef.current &&
         !userProfileRef.current.contains(event.target as Node)
       ) {
+        console.log('userprofileref outside');
         if (userProfileState) {
           handleProfileState();
+          console.log('userprofileref inside');
         }
       }
     },
