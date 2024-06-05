@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/components/home/navbar/navbar";
 import ProtectedRoute from "@/components/tools/protected-route";
 import { AuthProvider } from "@/context/auth-context";
 import { ThemeProvider } from "@/providers/theme-provider";

@@ -21,10 +21,13 @@ import { toast } from "sonner";
 import * as z from "zod";
 import { extractUserAgent } from "@/components/tools/extract-user-agent";
 import { setCookie } from "@/utils/setCokkie";
+import { useDispatch } from "react-redux";
+import { setToken } from "@/redux-state/get-token";
 
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -54,8 +57,7 @@ const LoginForm = () => {
 
         if (success) {
           toast.success(success);
-          // setCookie('accessToken', accessToken, 0.2)
-          // setCookie('refreshToken', refreshToken, 1)
+          dispatch(setToken({ accessToken, refreshToken })); 
           router.push('/')
         } else {
           toast.error(error);
@@ -99,7 +101,7 @@ const LoginForm = () => {
                         {...field}
                         disabled={isPending}
                         type="email"
-                        placeholder="manish@gmail.com"
+                         placeholder="manish@gmail.com"
                         className="mt-1.5 rounded-sm focus-visible:ring-0 focus-visible:ring-offset-0 bg-primary-input border-none"
                       />
                     </FormControl>

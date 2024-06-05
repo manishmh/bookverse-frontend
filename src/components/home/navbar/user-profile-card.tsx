@@ -1,16 +1,60 @@
 import DropdownCard from "@/components/global/dropdown-card";
+import { backendBaseUrl } from "@/constant";
+import { useToken } from "@/hooks/use-token";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import { ReactNode, useTransition } from "react";
 import { FaHeart, FaUser } from "react-icons/fa";
 import { FaBell, FaClockRotateLeft } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
+import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { resetToken } from "@/redux-state/get-token";
+import cookies from 'js-cookie'
 
 const UserProfileCard = ({
   handleProfileState,
 }: {
   handleProfileState: () => void;
 }) => {
+  const [isLoading, startTransition] = useTransition();
+  const router = useRouter();
+  const accessToken = useToken('access')
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    startTransition(async () => {
+      try {
+        const res = await fetch(`${backendBaseUrl}/logout`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `${accessToken}`,
+          },
+          body: JSON.stringify({}),
+        });
+
+        const { success, error } = await res.json();
+
+        if (error) {
+          toast.error(error);
+        } else {
+          dispatch(resetToken());
+          cookies.remove('accessToken');
+          cookies.remove('refreshToken');
+
+          console.log('accesstoken in logout', accessToken)
+          toast.success(success);
+          router.push("/login");
+        }
+      } catch (error) {
+        toast.error("Something went wrong! try again");
+      }
+    });
+  };
+
   return (
     <DropdownCard className="rounded-md h-auto cursor-default p-2 w-[250px] pb-4">
       <div>
@@ -21,10 +65,10 @@ const UserProfileCard = ({
           </div>
         </div>
         <div className="flex flex-col gap-1 mt-4">
-          <ProfileCardItem 
-            item="Profile" 
-            link="/profile" 
-            logo={<FaUser />} 
+          <ProfileCardItem
+            item="Profile"
+            link="/profile"
+            logo={<FaUser />}
             handleProfileState={handleProfileState}
           />
           <ProfileCardItem
@@ -51,12 +95,14 @@ const UserProfileCard = ({
             logo={<IoMdSettings />}
             handleProfileState={handleProfileState}
           />
-          <ProfileCardItem 
-            item="Log Out" 
-            link="/profile" 
-            logo={<MdLogout />} 
-            handleProfileState={handleProfileState}
-          />
+          <div onClick={handleLogout}>
+            <ProfileCardItem
+              item="Log Out"
+              link=""
+              logo={<MdLogout />}
+              handleProfileState={handleProfileState}
+            />
+          </div>
         </div>
       </div>
     </DropdownCard>
@@ -69,12 +115,12 @@ const ProfileCardItem = ({
   item,
   link,
   logo,
-  handleProfileState
+  handleProfileState,
 }: {
   item: string;
   link: string;
   logo: ReactNode;
-  handleProfileState: () => void;
+  handleProfileState?: () => void;
 }) => {
   return (
     <Link href={link} onClick={handleProfileState}>
