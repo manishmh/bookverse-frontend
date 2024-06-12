@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dynamic Book Reading Platform
 
-## Getting Started
+**Project Duration:** June 1, 2024 - Ongoing
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A versatile and dynamic book reading platform that offers a comprehensive collection of mangas, comics, and various books. This platform allows users to:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Upload their own PDFs or eBooks.
+- Read content seamlessly.
+- Track their reading progress.
+- Receive personalized recommendations.
+- Bookmark favorite sections.
+- Annotate content to enhance the reading experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **High-Level Search Engine APIs:** Provides accurate information about numerous entertainment mediums such as anime, manga, light novels, movies, etc.
+- **Streaming Links:** Includes links to stream content from publicly-available online sources.
+- **User Content Upload:** Users can upload their own PDFs or eBooks.
+- **Progress Tracking:** Keeps track of what users are reading and their progress.
+- **Personalized Recommendations:** Suggests content based on user preferences and reading history.
+- **Bookmarking and Annotation:** Allows users to bookmark sections and add annotations.
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+This platform integrates with a collection of high-level search engine APIs to provide accurate and up-to-date information about various entertainment mediums. This ensures that users have access to a wide range of content along with reliable links to stream these contents.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to Use
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Upload Books:** Easily upload your own PDFs or eBooks to the platform.
+2. **Read and Track Progress:** Enjoy reading and keep track of your progress with our intuitive progress tracking feature.
+3. **Personalized Experience:** Get content recommendations tailored to your tastes.
+4. **Bookmark and Annotate:** Bookmark important sections and add your own notes and annotations for a richer reading experience.
 
-## Deploy on Vercel
+## Contribution
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions to the project are welcome! Feel free to fork the repository and submit pull requests.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
