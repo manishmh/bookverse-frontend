@@ -5,7 +5,7 @@ import { continueWatchingData } from "@/constant";
 
 const ContinueWatching = () => {
   return (
-    <div className="px-3 max-w-screen-3xl mx-auto pb-20">
+    <div className="px-3 max-w-screen-3xl mx-auto">
       <div className="">
         <CardContainerHeader
           logo={<FaClockRotateLeft />}

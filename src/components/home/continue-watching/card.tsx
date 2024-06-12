@@ -1,25 +1,27 @@
 // !todo: implemetn open book fro component/open-book-annimatoin for hover effect on the image
-
 import Image from "next/image";
 import Link from "next/link";
+import { ReactNode } from "react";
 import { FiBookOpen } from "react-icons/fi";
 
 const ContinueWatchingCard = ({
   imgUrl,
   title,
-  currentPage,
+  currentPage = 0, 
   totalPage,
   readLink,
   currentChapter,
   totalChapter,
+  children,
 }: {
   imgUrl: string;
   title: string;
-  currentPage: number;
+  currentPage?: number;
   totalPage: number;
   readLink: string;
-  currentChapter: number;
-  totalChapter: number;
+  currentChapter?: number;
+  totalChapter?: number;
+  children?: ReactNode
 }) => {
   const readPercentage = Math.round((currentPage / totalPage) * 100);
 
@@ -51,19 +53,23 @@ const ContinueWatchingCard = ({
       </div>
       <div className="pt-2">
         <div className="truncate font-semibold">{title}</div>
-        <div className="mt-1 uppercase font-semibold text-sm text-muted-dark font-sans flex justify-between">
-          <div className="">CH {currentChapter}</div>
-          <div className="">
-            <span className="text-theme-light capitalize">Page {currentPage}</span> /{" "}
-            {totalPage}
-          </div>
-        </div>
-        <div className="w-full h-1 mt-2 bg-muted-darker">
-          <div
-            className="h-full bg-theme-light transition-all duration-200"
-            style={{ width: `${readPercentage}%` }}
-          ></div>
-        </div>
+        {!children && (
+          <>
+            <div className="mt-1 uppercase font-semibold text-sm text-muted-dark font-sans flex justify-between">
+              <div className="">CH {currentChapter}</div>
+              <div className="">
+                <span className="text-theme-light capitalize">Page {currentPage}</span> / {totalPage}
+              </div>
+            </div>
+            <div className="w-full h-1 mt-2 bg-muted-darker">
+              <div
+                className="h-full bg-theme-light transition-all duration-200"
+                style={{ width: `${readPercentage}%` }}
+              ></div>
+            </div>
+          </>
+        )}
+        {children}
       </div>
     </div>
   );
