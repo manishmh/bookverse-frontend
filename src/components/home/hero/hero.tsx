@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 const Hero = () => {
 
   return (
-    <div className="relative max-w-screen-3xl mx-auto bg-primary-light z-[-1]">
+    <div className="relative max-w-screen-3xl mx-auto bg-primary-light z[-1]">
         <Swiper
           spaceBetween={50}
           slidesPerView={1}
