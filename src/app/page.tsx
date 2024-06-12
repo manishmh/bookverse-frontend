@@ -13,7 +13,12 @@ export default function Home() {
       </div>
       <Hero />
       <Trending />
-      <ContinueWatching />
+      <div className="flex">
+        <div className="w-full lg:w-9/12 flex-shrink-0">
+          <ContinueWatching />
+        </div>
+        <div className="w-full hidden lg:block"></div>
+      </div>
     </main>
   );
 }

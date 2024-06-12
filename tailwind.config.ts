@@ -59,7 +59,8 @@ const config = {
         },
         muted: {
           dark: "#939DB6",
-          light: "#b3aede"
+          light: "#b3aede",
+          darker: "#43474f",
         } 
 
       },

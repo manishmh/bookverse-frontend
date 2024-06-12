@@ -138,3 +138,61 @@ export const homeCarouselDummyData = [
         "readLink": "/bleach"
     },
 ]
+
+export const continueWatchingData = [
+  {
+    imgUrl: "/onePiece.jpg",
+    title: "Mushoku Tensei: Jobless Reincarnation Season 2 Part 2",
+    currentPage: 20,
+    totalPage: 30,
+    readLink: "",
+    currentChapter: 56,
+    totalChapter: 170,
+  },
+  {
+    imgUrl: "/bleach.jpg",
+    title: "Attack on Titan: The Final Season Part 1",
+    currentPage: 10,
+    totalPage: 25,
+    readLink: "",
+    currentChapter: 45,
+    totalChapter: 139,
+  },
+  {
+    imgUrl: "/demonSlayer.jpg",
+    title: "Demon Slayer: Kimetsu no Yaiba - Entertainment District Arc",
+    currentPage: 15,
+    totalPage: 26,
+    readLink: "",
+    currentChapter: 120,
+    totalChapter: 205,
+  },
+  {
+    imgUrl: "/naruto.jpeg",
+    title: "My Hero Academia: Season 6",
+    currentPage: 5,
+    totalPage: 28,
+    readLink: "",
+    currentChapter: 80,
+    totalChapter: 250,
+  },
+  {
+    imgUrl: "/spy.jpeg",
+    title: "Jujutsu Kaisen: Season 2",
+    currentPage: 22,
+    totalPage: 30,
+    readLink: "",
+    currentChapter: 62,
+    totalChapter: 180,
+  },
+  {
+    imgUrl: "/spy.jpeg",
+    title: "One Piece: Wano Arc",
+    currentPage: 25,
+    totalPage: 40,
+    readLink: "",
+    currentChapter: 100,
+    totalChapter: 1000,
+  },
+];
+
