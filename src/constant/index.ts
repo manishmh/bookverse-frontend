@@ -1,7 +1,9 @@
 // export const backendBaseUrl = "https://bookverse-backend-ymxn.onrender.com"
-export const backendBaseUrl = "https://bookverse-backend-omega.vercel.app"
-// export const backendBaseUrl = "http://localhost:8080"
+// export const backendBaseUrl = "https://bookverse-backend-omega.vercel.app"
+export const backendBaseUrl = "http://localhost:8080"
 // export const backendBaseUrl = "http://localhost:3001"   
+
+export const carouselItemGap : number = 1;
 
 export const homeCarouselDummyData = [
     {
@@ -101,5 +103,38 @@ export const homeCarouselDummyData = [
         "volumes": 30,
         "chapters": 290,
         "description": "Asta and Yuno were"
+    },
+    {
+      "imageUrl": "/chainsaw.jpg",
+      "rank": 3,
+      "date": "10 April, 2024",
+      "title": "Chainsaw Man",
+      "language": "eng",
+      "volumes": 11,
+      "chapters": 97,
+      "description": "Denji's a poor young man who'll do anything for money, even hunting down devils with his pet devil-dog Pochita. He's a simple man with simple dreams, drowning under a mountain of debt. But his sad life gets turned upside down one day when he's betrayed by someone he trusts.",
+      "readLink": "/chainsaw-man"
+    },
+    {
+        "imageUrl": "/demonSlayer.jpg",
+        "rank": 1,
+        "date": "27 May, 2024",
+        "title": "Demon Slayer: Kimetsu no Yaiba Hashira Training Arc",
+        "language": "eng",
+        "volumes": 4,
+        "chapters": 112,
+        "description": "The New Gate is an online life-or-death game with tens of thousands of players. Thanks to Shin, the most skilled veteran player, the other players will finally be released from the game. Shin has killed the last boss and believes he is finally able to escape when he is blinded by a flash of mysterious light. He awakes to find himself in the game's world 500 years later! So begins a new chapter in the life of an unsurpassed legendary player!",
+        "readLink": "/demon"
+    },
+    {
+        "imageUrl": "/bleach.jpg",
+        "rank": 2,
+        "date": "15 June, 2024",
+        "title": "Bleach: Thousand-Year Blood War",
+        "language": "eng",
+        "volumes": 20,
+        "chapters": 206,
+        "description": "Ichigo Kurosaki never asked for the ability to see ghosts—he was born with the gift. When his family is attacked by a Hollow—a malevolent lost soul—Ichigo becomes a Soul Reaper, dedicating his life to protecting the innocent and helping the tortured spirits find peace.",
+        "readLink": "/bleach"
     },
 ]

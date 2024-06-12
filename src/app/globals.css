@@ -1,16 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 body {
-  /* background-color: #030014; */
-  background-color: #10151D;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif!important;
+  /* background: linear-gradient(180deg, #141620 0%, #0A0B0D 100%); */
+  background-color: #141620;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 :root {
-  --body-color: #010c15;
+  --body-color: #141620;
   --text-color: #7e8294;
   --hover-color: #ebd9ff;
   --accent-color: #A87FFB;
@@ -94,11 +95,6 @@ nav {
   /* border-color: linear-gradient(320deg, #2E64DE -17.73%, #3C8FE3 50.43%); */
 /* background-color: #060606; */
 
-body {
-  background: linear-gradient(180deg, #141620 0%, #0A0B0D 100%);
-  background-repeat: no-repeat;
-  height: 100vh;
-}
 
 .swiper-button-next, .swiper-button-prev {
   background-color: #2f3348;
@@ -131,8 +127,22 @@ body {
   font-size: 14px!important; 
 }
 
+.aspect-7-8 {
+  aspect-ratio: 7 / 8;
+}
+
+.aspect-9-16 {
+  aspect-ratio: 9 / 12;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl; /* or vertical-lr */
+  text-orientation: upright;
+}
+
 @media screen and (max-width: 768px) {
   .swiper-button-next, .swiper-button-prev {
     display: none!important;
   }
 }
+
