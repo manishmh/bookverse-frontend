@@ -33,6 +33,10 @@ This platform integrates with a collection of high-level search engine APIs to p
 3. **Personalized Experience:** Get content recommendations tailored to your tastes.
 4. **Bookmark and Annotate:** Bookmark important sections and add your own notes and annotations for a richer reading experience.
 
+## Backend Repository
+
+The backend for this project, which implements JWT token authentication, can be found on GitHub: [Dynamic Book Reading Platform Backend](https://github.com/manishmh/bookverse-backend)
+
 ## Contribution
 
 Contributions to the project are welcome! Feel free to fork the repository and submit pull requests.
