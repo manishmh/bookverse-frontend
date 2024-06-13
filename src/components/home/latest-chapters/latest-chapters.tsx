@@ -1,6 +1,5 @@
 import CardContainerHeader from "@/components/global/card-container-header";
 import { latestChaptersData } from "@/constant";
-import { FaClockRotateLeft } from "react-icons/fa6";
 import ContinueWatchingCard from "../continue-watching/card";
 
 const LatestChapters = () => {
@@ -8,7 +7,6 @@ const LatestChapters = () => {
     <div className="px-3 max-w-screen-3xl mx-auto">
       <div className="">
         <CardContainerHeader
-          logo={<FaClockRotateLeft />}
           title="Latest Chapters"
           viewLink=""
         />

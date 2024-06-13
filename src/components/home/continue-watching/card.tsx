@@ -35,7 +35,7 @@ const ContinueWatchingCard = ({
           height={600}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 backdrop-blur-md bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-all duration-200 grid place-items-center">
+        <div className="absolute inset-0 backdrop-blur-md bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-all duration-500 grid place-items-center">
           <Link href={readLink}>
             <button className="px-4 md:px-6 my-2 md:my-0 border py-1.5 font-semibold bg-primary-light border-[#939DB6] text-white hover:bg-opacity-80 transition-colors duration-200">
               Read

@@ -1,20 +1,20 @@
-import { FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { FaChevronRight } from "react-icons/fa";
 
 const CardContainerHeader = ({
   logo,
   title,
   viewLink,
 }: {
-  logo: ReactNode;
+  logo?: ReactNode;
   title: string;
   viewLink: string;
 }) => {
   return (
     <div className="flex justify-between items-center py-8 ">
       <div className="flex gap-2 items-center md:text-xl font-semibold text-theme-light">
-        <span>{logo}</span>
+        {logo && <span>{logo}</span>}
         <span>{title}</span>
       </div>
       <Link href={viewLink}>
