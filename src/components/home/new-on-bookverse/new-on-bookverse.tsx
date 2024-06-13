@@ -8,7 +8,6 @@ const NewOnBookverse = () => {
     <div className="px-3 max-w-screen-3xl mx-auto pb-8">
       <div className="">
         <CardContainerHeader
-          logo={<FaClockRotateLeft />}
           title="New on Bookverse"
           viewLink=""
         />

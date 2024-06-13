@@ -5,6 +5,7 @@ import Hero from "@/components/home/hero/hero";
 import LatestChapters from "@/components/home/latest-chapters/latest-chapters";
 import Navbar from "@/components/home/navbar/navbar";
 import NewOnBookverse from "@/components/home/new-on-bookverse/new-on-bookverse";
+import TopBook from "@/components/home/top-book/top-book";
 import Trending from "@/components/home/trending/trending";
 
 export default function Home() {
@@ -21,7 +22,9 @@ export default function Home() {
           <LatestChapters />
           <NewOnBookverse />
         </div>
-        <div className="w-full hidden lg:block"></div>
+        <div className="w-full hidden lg:block">
+          <TopBook />
+        </div>
       </div>
     </main>
   );
