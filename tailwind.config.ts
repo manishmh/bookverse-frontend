@@ -51,7 +51,8 @@ const config = {
         },
         theme: {
           light: "#7d55cd",
-          dark: "#472290"
+          dark: "#472290",
+          darker: "#2B2A3C"
         },
         card: {
           border: "#3d516f",

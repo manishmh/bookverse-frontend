@@ -8,10 +8,11 @@ export const carouselLength: number = homeCarouselDummyData.length;
 
 const Trending = () => {
   const [tIndex, setTIndex] = useState<number>(0);
+  const [trendingCarouselChildCount, setTrendingCarouselChildCount] = useState(0);
   const carouselScrolllength: number = 3;
 
   const handleRightClick = () => {
-    if (-tIndex <= carouselLength - (trendingCarouselChildCount + 1)) {
+    if (-tIndex <= carouselLength - (trendingCarouselChildCount + 2)) {
       setTIndex(tIndex - carouselScrolllength);
     }
   };
@@ -20,9 +21,6 @@ const Trending = () => {
       setTIndex(tIndex + carouselScrolllength);
     }
   };
-
-  const [trendingCarouselChildCount, setTrendingCarouselChildCount] = useState(0);
-  console.log(trendingCarouselChildCount)
 
   useEffect(() => {
     const count = VisibleChildrenCount('trending-swiper');
