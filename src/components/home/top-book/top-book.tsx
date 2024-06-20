@@ -1,3 +1,4 @@
+'use client'
 // todo: conditionally render books on activeTopOptions as user selects diffrent filter. use swtich case statement to return the correct data occording to the active option.
 
 import { latestChaptersData } from "@/constant";
