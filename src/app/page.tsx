@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import Footer from "@/components/global/footer";
 import ContinueWatching from "@/components/home/continue-watching/continue-watching";
@@ -9,23 +9,18 @@ import Navbar from "@/components/home/navbar/navbar";
 import NewOnBookverse from "@/components/home/new-on-bookverse/new-on-bookverse";
 import TopBook from "@/components/home/top-book/top-book";
 import Trending from "@/components/home/trending/trending";
+import { MANGA } from "@consumet/extensions"
 
-import axios from "axios";
 
-const url = "http://localhost:3000/manga/mangadex/info";
-const data = async () => {
-  try {
-    const { data } = await axios.get(url, {
-      params: { id: "demon-slayer" },
-    });
-    console.log("data from fetch", data);
-    return data;
-  } catch (err: any) {
-    throw new Error(err.message);
-  }
-};
+const FetchBooks = async () => {
+  const manga = new MANGA.MangaDex();
+  console.log('manga detailsss', manga)
+  const result = manga.search("demon slayer");
 
-data();
+  console.log('search result in home', result);
+}
+
+FetchBooks();
 
 export default function Home() {
   return (
