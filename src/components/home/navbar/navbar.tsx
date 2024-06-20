@@ -1,3 +1,5 @@
+'use client'
+
 import NavbarNotificationCard from "@/components/home/navbar/navbar-notification-card";
 import UserProfileCard from "@/components/home/navbar/user-profile-card";
 import { useAuth } from "@/context/auth-context";

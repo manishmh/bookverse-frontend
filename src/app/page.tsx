@@ -1,5 +1,3 @@
-"use client";
-
 import Footer from "@/components/global/footer";
 import ContinueWatching from "@/components/home/continue-watching/continue-watching";
 import BookGenres from "@/components/home/genres/genres";

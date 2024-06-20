@@ -1,3 +1,5 @@
+'use client'
+
 import { GENRES } from "@/constant";
 import { getRandomLightColor } from "@/lib/random-colors";
 import Link from "next/link";

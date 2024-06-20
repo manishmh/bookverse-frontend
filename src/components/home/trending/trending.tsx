@@ -1,3 +1,5 @@
+'use client'
+
 import { carouselItemGap, homeCarouselDummyData } from "@/constant";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";

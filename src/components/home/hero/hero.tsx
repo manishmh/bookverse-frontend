@@ -1,3 +1,5 @@
+'use client'
+
 import { homeCarouselDummyData } from "@/constant";
 import Image from "next/image";
 import HeroDetails from "./hero-details";
