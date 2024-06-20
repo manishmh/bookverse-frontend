@@ -72,6 +72,10 @@ const Navbar: React.FC = () => {
     [userProfileState, handleProfileState]
   );
 
+  const handleSearchClick = () => {
+    setSearchClick(prevState => !prevState)
+  }
+
   const handleClickOutside = useCallback(
     (event: Event) => {
       if (
@@ -129,7 +133,7 @@ const Navbar: React.FC = () => {
   }, [handleProfileOutsideClick]);
 
   return (
-    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative z-40">
+    <div className="flex justify-between items-center px-2 md:px-4 py-2 max-w-screen-3xl mx-auto gap-4 relative z-[1000]">
       <div className="flex items-center gap-4 md:gap-8 flex-shrink-0">
         <div className="uppercase font-bold text-lg md:text-xl">Bookverse</div>
         <nav className="text-sm md:text-base capitalize text-muted-dark hidden md:flex">
@@ -182,7 +186,7 @@ const Navbar: React.FC = () => {
                     ? "bg-theme-light text-white hover:text-[#d8d6d6]"
                     : "bg-none text-muted-dark hover:text-white "
                 } `}
-                onClick={() => setSearchClick(true)}
+                onClick={handleSearchClick}
               >
                 <IoSearch className="transition-colors duration-200 text-2xl overflow-hidden " />
               </div>

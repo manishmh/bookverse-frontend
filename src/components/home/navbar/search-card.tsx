@@ -3,11 +3,9 @@ import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa";
 import DropdownComponent from "./dropdown-component";
 
-const SearchCard = ({
-}: {
-}) => {
+const SearchCard = () => {
   return (
-    <DropdownCard className="w-full absolute top-full translate-y-[40px] lg:translate-y-0 h-auto max-w-none">
+    <DropdownCard className="w-full absolute top-full translate-y-[40px] lg:translate-y-0 h-auto max-w-none z-[20000]">
       <div>
         <DropdownComponent
           img="https://cdn.noitatnemucod.net/thumbnail/100x200/100/1f06eb0baf5520aa639b546fc189400d.jpg"

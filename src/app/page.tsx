@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Footer from "@/components/global/footer";
 import ContinueWatching from "@/components/home/continue-watching/continue-watching";
@@ -9,20 +9,9 @@ import Navbar from "@/components/home/navbar/navbar";
 import NewOnBookverse from "@/components/home/new-on-bookverse/new-on-bookverse";
 import TopBook from "@/components/home/top-book/top-book";
 import Trending from "@/components/home/trending/trending";
-import { MANGA } from "@consumet/extensions"
-
-
-const FetchBooks = async () => {
-  const manga = new MANGA.MangaDex();
-  console.log('manga detailsss', manga)
-  const result = manga.search("demon slayer");
-
-  console.log('search result in home', result);
-}
-
-FetchBooks();
 
 export default function Home() {
+
   return (
     <main>
       <div className="md:fixed w-full backdrop-blur-sm relative z-40">
@@ -36,7 +25,7 @@ export default function Home() {
           <LatestChapters />
           <NewOnBookverse />
         </div>
-        <div className="w-full px-3 xl:px-0 pr-3 pt-8 space-y-6">
+        <div className="w-full px-3 xl:px-0 xl:pr-3 pt-8 space-y-6">
           <TopBook />
           <BookGenres />
         </div>
