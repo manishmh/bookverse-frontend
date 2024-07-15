@@ -10,6 +10,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'fmcdn.mangahere.com',
         },
+        {
+            protocol: 'https',
+            hostname: 'mangadex.org',
+        }
         ],
     } 
 };
