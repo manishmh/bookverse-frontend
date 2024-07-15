@@ -14,12 +14,13 @@ const HeroDetails = ({
   rank?: number;
   title: string;
   date: string;
-  volumes: number;
+  volumes: string;
   chapters: number;
   language: string;
   description: string;
   readLink: string;
 }) => {
+
   return (
     <div className="bg-opacity-20 flex items-end px-3 pb-16 pt-28 z-0 w-full h-[40vh] md:h-auto md:min-h-[70vh] xl:min-h-[80vh] 3xl:min-h-[900px]">
       <div className="flex flex-col gap-1 md:gap-6">
@@ -48,11 +49,11 @@ const HeroDetails = ({
             <span className="bg-theme-light font-semibold py-1 px-2 text-primary-light rounded flex items-center justify-center capitalize">
               {language}
             </span>
-            <span className="bg-blue-300 text-primary-dark capitalize px-2 rounded grid place-items-center">
-              vol {volumes}
-            </span>
             <span className="bg-green-300 text-primary-dark capitalize px-2 rounded grid place-items-center">
               cha {chapters}
+            </span>
+            <span className="bg-blue-300 text-primary-dark capitalize px-2 rounded grid place-items-center">
+              {volumes}
             </span>
           </div>
         </div>

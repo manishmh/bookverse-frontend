@@ -1,20 +1,51 @@
-'use client'
+"use client";
 
-import { carouselItemGap, homeCarouselDummyData } from "@/constant";
+import VisibleChildrenCount from "@/components/global/visible-child-count";
+import { carouselItemGap } from "@/constant";
+import { fetchPopularManga } from "@/redux-state/manga-data/get-popular-manga";
+import { AppDispatch, RootState } from "@/store/redux-store";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import TrendingCard from "./trending-card";
-import VisibleChildrenCount from "@/components/global/visible-child-count";
-
-export const carouselLength: number = homeCarouselDummyData.length;
+import { data } from "@/constant";
 
 const Trending = () => {
   const [tIndex, setTIndex] = useState<number>(0);
-  const [trendingCarouselChildCount, setTrendingCarouselChildCount] = useState(0);
-  const carouselScrolllength: number = 3;
+  const [trendingCarouselChildCount, setTrendingCarouselChildCount] =
+    useState(0);
+  const carouselScrolllength: number = 4;
+
+  const dispatch = useDispatch<AppDispatch>();
+  // const { data, status, error } = useSelector(
+  //   (state: RootState) => state.popularManga
+  // );
+  const trendingData = data;
+
+  const carouselLength: number = trendingData?.length ?? 0;
+
+  // useEffect(() => {
+  //   dispatch(fetchPopularManga());
+  // }, [dispatch]);
+
+  useEffect(() => {
+    const calculateVisibleChildren = () => {
+      requestAnimationFrame(() => {
+        const count = VisibleChildrenCount("trending-swiper");
+        setTrendingCarouselChildCount(count);
+      });
+    };
+
+    calculateVisibleChildren();
+    window.addEventListener("resize", calculateVisibleChildren);
+
+    return () => {
+      window.removeEventListener("resize", calculateVisibleChildren);
+    };
+  }, []);
 
   const handleRightClick = () => {
-    if (-tIndex <= carouselLength - (trendingCarouselChildCount + 2)) {
+    if (-tIndex <= carouselLength - (trendingCarouselChildCount)) {
       setTIndex(tIndex - carouselScrolllength);
     }
   };
@@ -24,10 +55,8 @@ const Trending = () => {
     }
   };
 
-  useEffect(() => {
-    const count = VisibleChildrenCount('trending-swiper');
-    setTrendingCarouselChildCount(count);
-  }, []);
+  // if (status === "loading") return <p>Loading...</p>;
+  // if (status === "failed") return <p>Error: {error}</p>;
 
   return (
     <div className="bg-primary-light w-full px-3 max-w-screen-3xl mx-auto pb-8">
@@ -40,14 +69,17 @@ const Trending = () => {
             className="flex w-full trending-swiper"
             style={{ gap: carouselItemGap }}
           >
-            {homeCarouselDummyData.map((item, index) => (
-              <TrendingCard
-                key={index}
-                tIndex={tIndex}
-                item={item}
-                index={index}
-              />
-            ))}
+            <div className="bg-muted-darker w-full aspect-[19/8]"></div>
+            {trendingData &&
+              trendingData.map((item, index) => (
+                <TrendingCard
+                  key={index}
+                  tIndex={tIndex}
+                  item={item}
+                  index={index}
+                  carouseLength={carouselLength}
+                />
+              ))}
           </div>
         </div>
         <div className="absolute right-0 top-0 h-full flex-col gap-2 hidden md:flex items-end">
