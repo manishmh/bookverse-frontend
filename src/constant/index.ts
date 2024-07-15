@@ -1,6 +1,6 @@
 // export const backendBaseUrl = "https://bookverse-backend-ymxn.onrender.com"
-// export const backendBaseUrl = "https://bookverse-backend-omega.vercel.app"
-export const backendBaseUrl = "http://localhost:8080"
+export const backendBaseUrl = "https://bookverse-backend-omega.vercel.app"
+// export const backendBaseUrl = "http://localhost:8080"
 // export const backendBaseUrl = "http://localhost:3001"   
 
 export const carouselItemGap : number = 1;
